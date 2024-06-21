@@ -31,14 +31,14 @@ export const initialData: SeedData = {
     {
       email: 'test1@email.com',
       fullName: 'Test Test',
-      password: 'Abc123',
-      roles: ['admin'],
+      password: 'Anix300Lost!',
+      roles: ['admin', 'user'],
     },
     {
       email: 'test2@email.com',
       fullName: 'Test Test',
-      password: 'Abc123',
-      roles: ['admin'],
+      password: 'Anix300Lost!',
+      roles: ['admin', 'user'],
     },
   ],
   products: [

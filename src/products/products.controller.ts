@@ -17,7 +17,10 @@ import { Auth } from '../auth/decorators/auth.decorator';
 import { ValidRoles } from '../auth/interfaces/valid-roles.interface';
 import { GetUser } from '../auth/decorators/get-user.decorator';
 import { User } from '../auth/entities/user.entity';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Product } from './entities/product.entity';
 
+@ApiTags('Products')
 @Controller('products')
 @Auth()
 export class ProductsController {
@@ -25,6 +28,13 @@ export class ProductsController {
 
   @Post()
   @Auth(ValidRoles.admin)
+  @ApiResponse({
+    status: 201,
+    description: 'Product created successfully',
+    type: Product,
+  })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
+  @ApiResponse({ status: 403, description: 'Forbidden Token' })
   create(@Body() createProductDto: CreateProductDto, @GetUser() user: User) {
     return this.productsService.create(createProductDto, user);
   }
